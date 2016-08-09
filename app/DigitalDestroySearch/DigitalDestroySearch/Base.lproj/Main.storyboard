@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rlT-LT-JJL">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="DDSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SRd-BT-eDR">
+                                <rect key="frame" x="20" y="246" width="560" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bdJ-3Y-nso"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4y-gD-i7P">
+                                <rect key="frame" x="260" y="364" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="C4H-6C-o8M"/>
+                                    <constraint firstAttribute="height" constant="80" id="OM3-gB-Bld"/>
+                                </constraints>
+                                <state key="normal" title="Search" image="icon-no-white"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D. D. Search" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4B-6J-Lkx">
+                                <rect key="frame" x="248" y="109" width="104" height="21"/>
+                                <fontDescription key="fontDescription" name="Optima-ExtraBlack" family="Optima" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d4y-gD-i7P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="136" id="0DP-LQ-LPe"/>
+                            <constraint firstItem="SRd-BT-eDR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3dy-Xl-pox"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d4y-gD-i7P" secondAttribute="bottom" constant="108" id="BXn-yf-5ta"/>
+                            <constraint firstItem="SRd-BT-eDR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="117" id="RYV-cK-S68"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d4y-gD-i7P" secondAttribute="bottom" constant="265" id="VHR-29-6Tp"/>
+                            <constraint firstItem="SRd-BT-eDR" firstAttribute="centerX" secondItem="d4y-gD-i7P" secondAttribute="centerX" id="WK3-In-tva"/>
+                            <constraint firstItem="d4y-gD-i7P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cDS-kT-hDR"/>
+                            <constraint firstItem="c4B-6J-Lkx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kmA-YF-mv0"/>
+                            <constraint firstItem="d4y-gD-i7P" firstAttribute="top" secondItem="SRd-BT-eDR" secondAttribute="bottom" constant="74" id="uxq-A1-MNd"/>
+                            <constraint firstItem="SRd-BT-eDR" firstAttribute="top" secondItem="c4B-6J-Lkx" secondAttribute="bottom" constant="116" id="vo1-oe-Yw6"/>
+                            <constraint firstItem="SRd-BT-eDR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xfN-ZW-SX5"/>
+                            <constraint firstItem="SRd-BT-eDR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="y9z-O7-guT"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3dy-Xl-pox"/>
+                                <exclude reference="RYV-cK-S68"/>
+                                <exclude reference="BXn-yf-5ta"/>
+                                <exclude reference="VHR-29-6Tp"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="otV-LT-ae9"/>
+                    <connections>
+                        <outlet property="mSearchBar" destination="SRd-BT-eDR" id="7xv-4Z-AUh"/>
+                        <outlet property="mSearchButton" destination="d4y-gD-i7P" id="3Rd-uH-uf3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1181" y="410"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yb5-eb-Dui">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rlT-LT-JJL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="WDI-3e-sam">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mni-MY-gq5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPa-GS-SpM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="369" y="410"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-no-white" width="150" height="150"/>
+    </resources>
+</document>
