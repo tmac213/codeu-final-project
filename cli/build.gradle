@@ -1,0 +1,21 @@
+apply plugin: 'java';
+apply plugin: 'application';
+apply plugin: 'maven';
+apply plugin: 'groovy';
+repositories{
+	mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile "net.sf.jopt-simple:jopt-simple:5.0.2"
+	runtime "net.sf.jopt-simple:jopt-simple:5.0.2"
+}
+
+task( cli, dependsOn: jar, type: JavaExec ) {
+	main = 'CLIcode';
+	classpath = sourceSets.main.runtimeClasspath
+}
+mainClassName = "CLIcode"
