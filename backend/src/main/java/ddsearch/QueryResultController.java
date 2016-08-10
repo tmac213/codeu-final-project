@@ -16,8 +16,10 @@ public class QueryResultController {
                                 @RequestParam(value="language", defaultValue="EN_US") String language,
                                 @RequestParam(value="num_results", defaultValue="100") int numResults) {
 
+        //TODO add support for two keywords 
         List<Entry<String, Integer>> results = WikiSearch.search(query).sort();
         ArrayList<QueryResult> ret = new ArrayList<>();
+
         for (Entry<String, Integer> entry : results) {
             ret.add(new QueryResult(entry.getKey()));
         }

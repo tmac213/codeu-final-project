@@ -151,7 +151,15 @@ public class WikiSearch {
 	 * @return
 	 */
 	public static WikiSearch search(String term) {
-		Map<String, Integer> map = index.getCounts(term);
+        Map<String, Integer> map = null;
+        try {
+		    map = index.getCounts(term);
+        } catch (Exception e) {
+            try {
+                jedis = JedisMaker.make();
+                index = new JedisIndex(jedis);
+            } catch (Exception e2) {}
+        }
 		return new WikiSearch(map);
 	}
 
