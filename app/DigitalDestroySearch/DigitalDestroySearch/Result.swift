@@ -15,6 +15,7 @@ class Result {
     var id: Int?
     var title: String?
     var url: String?
+    var score: Int?
     var summary: String?
     var timestamp: NSDate?
     
@@ -24,6 +25,7 @@ class Result {
         self.id = json["id"] as? Int
         self.title = json["title"] as? String
         self.url = json["url"] as? String
+        self.score = json["score"] as? Int
         self.summary = json["summary"] as? String
         self.timestamp = json["timestamp"] as? NSDate
     }

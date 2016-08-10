@@ -17,7 +17,11 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mSearchBar: UISearchBar!
     @IBOutlet weak var mSearchButton: UIButton!
+    
+    var results = [Result]()
 
+    let sQueryURL = "http://52.3.149.50:8080/search?q="
+    
     // MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +45,43 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Actions
     
-    @IBAction func searchButtonTapped() {
-        // retrieve data and move to results screen
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let resultsVC = segue.destinationViewController as! ResultsViewController
+        resultsVC.results = self.results
     }
     
     
+    // MARK: Actions
+    
+    @IBAction func searchButtonTapped() {
+        results.removeAll()
+        
+        let searchURL = NSURL(string: (sQueryURL + mSearchBar.text!.lowercaseString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!))
+        print(searchURL)
+        if let resultJSONData = NSData(contentsOfURL: searchURL!) {
+            print(resultJSONData)
+            do {
+                if let jsonArray = try NSJSONSerialization.JSONObjectWithData(resultJSONData, options: []) as? [NSDictionary] {
+                    for (_, jsonResult) in jsonArray.enumerate() {
+                        let result = Result(json: jsonResult)
+                        print(result)
+                        results.insert(result, atIndex: 0)
+                    }
+                } else {
+                    print("error with json result serialization")
+                }
+            } catch let jsonError as NSError {
+                print(jsonError.localizedDescription)
+            }
+        } else {
+            print("error when fetching data from search url")
+        }
+        
+        performSegueWithIdentifier("segue", sender: nil)
+    }
 }
 
 // MARK: - UIGestureRecognizerDelegate
@@ -79,6 +113,7 @@ extension MainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.endEditing(false)
+        searchButtonTapped()
         // tableView.reloadData()
     }
     
