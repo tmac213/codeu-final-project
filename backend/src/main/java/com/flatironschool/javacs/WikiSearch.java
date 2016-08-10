@@ -26,13 +26,14 @@ public class WikiSearch {
         try {
             jedis = JedisMaker.make();
             index = new JedisIndex(jedis);
+            index.printIndex();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 	// map from URLs that contain the term(s) to relevance score
-	private Map<String, Integer> map;
+	public Map<String, Integer> map;
 
 	/**
 	 * Constructor.
