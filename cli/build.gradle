@@ -12,6 +12,7 @@ repositories{
 
 dependencies {
 	compile "net.sf.jopt-simple:jopt-simple:5.0.2"
+	compile "org.json:json:20160212"
 	runtime "net.sf.jopt-simple:jopt-simple:5.0.2"
 }
 

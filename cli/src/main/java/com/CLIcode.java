@@ -6,11 +6,17 @@ import java.util.Scanner;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 
+import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 // Helper method that is called if the user types "help"
 // The options for the CLI are printed
 //public void HelperPrint{
 	
 //} //end of HelperPrint
+
 public class CLIcode {
     public static void main( String[] args ) throws IOException{
        	// Part 1: Determine what options the user started program with and adjust to them
@@ -48,9 +54,51 @@ public class CLIcode {
 	{
 	  int i = 0;
 	  String [] input_list = text.split(" ");
-	 
+	
+ 	  // Build the http URL to retrieve the result
+	  //String requestURL = "http://52.3.149.50:8080/search?q=programming";
+          String requestURL = "http://qartis.com/test.json";
+	  URL wikiRequest = new URL(requestURL);
+
+	  Scanner wikiScanner = new Scanner(wikiRequest.openStream());
+          String result = wikiScanner.useDelimiter("\\Z").next();
+	  JSONArray json = new JSONArray(result);
+	  wikiScanner.close();
+	  
+	  //Iterate over json object (id, url, title, summary, timestamp)
+	  //Handle every error if one+ is empty
+
+	  //System.out.println(json.toString());
+	 // System.out.println(json[0].url);
+	  String[] data = new String[]{"id", "url", "title", "summary", "timestamp"};
+	  StringBuffer sb = new StringBuffer("Results: ");
+	  sb.append("\n");
+	  for(int m = 0; m <json.length(); m++)
+	  {
+	    JSONObject jsonObject = json.getJSONObject(m);
+	    sb.append(jsonObject.getString("title"));
+	    sb.append("\n");
+	    sb.append(jsonObject.getString("summary"));
+	    sb.append("\n");
+	    sb.append(jsonObject.getString("timestamp"));
+	    sb.append("\n");
+	    sb.append(jsonObject.getString("url"));
+	    sb.append("\n");
+	    sb.append("\n");
+	  }
+
+	  System.out.println(sb.toString());
+
+	  /*for(int m = 0; m <json.length(); m++)
+	  {
+		JSONObject jsonObject = json.getJSONObject(m);
+		for(String n : jsonObject.keys()) {
+		  System.out.println("Key: " + n + "; Value: " + jsonObject.getString(n));
+		}
+	  }*/
+
 	  System.out.println("Please input the keyword(s) to search for: ");
-	  text = input.nextLine();
+	  text = input.nextLine();	 
 	}
 	while (!text.equals("exit"));
 
