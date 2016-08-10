@@ -6,12 +6,14 @@ public class QueryResult {
 
 //    @Getter private final long id;
     @Getter private final String url;
+    @Getter private final int score;
 //    @Getter private final String title;
 //    @Getter private final String summary;
 //    @Getter private final long timestamp;
 
-    public QueryResult(final String url) {
+    public QueryResult(final String url, int score) {
         this.url = url;
+        this.score = score;
     }
 
     /*
