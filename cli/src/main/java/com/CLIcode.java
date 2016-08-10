@@ -56,9 +56,11 @@ public class CLIcode {
 	  String [] input_list = text.split(" ");
 	
  	  // Build the http URL to retrieve the result
-	  //String requestURL = "http://52.3.149.50:8080/search?q=programming";
-          String requestURL = "http://qartis.com/test.json";
-	  URL wikiRequest = new URL(requestURL);
+	  //String temp = "http://52.3.149.50:8080/search?q="+text;
+	   String temp = "http://qartis.com/test.json"+text;
+	  temp = temp.replaceAll(" ", "%20");
+          //String requestURL = "http://qartis.com/test.json";
+	  URL wikiRequest = new URL(temp);
 
 	  Scanner wikiScanner = new Scanner(wikiRequest.openStream());
           String result = wikiScanner.useDelimiter("\\Z").next();
